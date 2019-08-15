@@ -8,6 +8,7 @@
   <style>
     .chat__output {
       height: 80px;
+
       overflow-y: scroll;
 
       transition: background-color 250ms;
@@ -32,22 +33,6 @@
     <button class="chat__toggle">Enable</button>
   </section>
 
-  <script src="src/chat.js"></script>
+  <script src="./chat.js"></script>
 </body>
 </html>
-
-<!-- <script>
-  var out = document.getElementById("out");
-  var c = 0;
-  var add = setInterval(function() {
-    // allow 1px inaccuracy by adding 1
-    var isScrolledToBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
-    console.log(out.scrollHeight - out.clientHeight, out.scrollTop + 1);
-    var newElement = document.createElement("div");
-    newElement.innerHTML = c++;
-    out.appendChild(newElement);
-    // scroll to bottom if isScrolledToBotto
-    if (isScrolledToBottom)
-      out.scrollTop = out.scrollHeight - out.clientHeight;
-  }, 1000);
-</script> -->

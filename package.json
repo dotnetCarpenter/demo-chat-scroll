@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "dotnetCarpenter <jon.ronnenberg@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "ch01": "ws --directory ch01 --open"
+  },
   "dependencies": {
     "jquery": "^3.4.1"
   },
