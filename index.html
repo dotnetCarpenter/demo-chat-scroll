@@ -1,15 +1,42 @@
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Naive chat demo</title>
+  <style>
+    .chat__output {
+      height: 80px;
+      overflow-y: scroll;
 
-<script>
-  setInterval(
-    function() {
-      $('#out').load('load_chat.php');
-      var messageBody = document.querySelector('#out');
-      out.scrollTop = out.scrollHeight - out.clientHeight;
-    }, 3000);
-</script>
+      transition: background-color 250ms;
+    }
 
-<script>
+    .chat--disabled .chat__output {
+      background-color: hsla(0, 0%, 0%, 0.4);
+    }
+
+    .chat--enabled .chat__output {
+      background-color: hsla(0, 0%, 0%, 0);
+    }
+
+    .chat__message:nth-child(odd) {
+      background-color: hsla(0, 0%, 0%, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <section class="chat chat--disabled">
+    <div class="chat__output"></div>
+    <button class="chat__toggle">Enable</button>
+  </section>
+
+  <script src="src/chat.js"></script>
+</body>
+</html>
+
+<!-- <script>
   var out = document.getElementById("out");
   var c = 0;
   var add = setInterval(function() {
@@ -23,6 +50,4 @@
     if (isScrolledToBottom)
       out.scrollTop = out.scrollHeight - out.clientHeight;
   }, 1000);
-</script>
-
-<div id="out" style="overflow-y: scroll; height:80px;"></div>
+</script> -->

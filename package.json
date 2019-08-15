@@ -1,10 +1,13 @@
 {
-  "name": "demo-chatscroll",
+  "name": "demo-chat-scroll",
   "version": "1.0.0",
   "main": "index.js",
   "author": "dotnetCarpenter <jon.ronnenberg@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "jquery": "^3.4.1"
+  },
+  "optionalDependencies": {
+    "local-web-server": "^3.0.7"
   }
 }
