@@ -1,5 +1,7 @@
 https://stackoverflow.com/questions/57367962/chat-does-not-scroll-to-the-bottom-when-i-use-jquery-load-method
 
+[Back to index](../README.md)
+
 I am going to show you how to implement, some of a very simple
 and naive chat. Not in jQuery, because it seems that you still
 need to _get_ the foundation of front-end development, but in
