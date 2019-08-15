@@ -1,0 +1,10 @@
+{
+  "name": "demo-chatscroll",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "dotnetCarpenter <jon.ronnenberg@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
+}
