@@ -102,7 +102,7 @@ chat.on('received', json => {
   if (json && json[0] && json[0].title) {
     const isScrolledToBottom = output.scrollHeight - output.clientHeight <= output.scrollTop + 1;
     const message = json[0].title;
-    const messageElement = document.createElement('div');
+    const messageElement = document.createElement('p');
 
     messageElement.classList.add('chat__message');
     messageElement.innerHTML = message;

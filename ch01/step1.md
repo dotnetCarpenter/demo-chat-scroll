@@ -25,6 +25,25 @@ _As shown above; the Model never speaks to the View and vice versa._
 
 ### View
 
+A front-end View, mainly, consist of HTML and CSS.
+HTML is pretty easy to grasp which is also the whole point of
+HTML.
+However, we do strive for semantic HTML. That is, HTML that
+convey a meaning about the structure. This is both helpful for
+the next developer, who need to read your code, for search
+engines and screen readers.
+
+For our simple chat we will use the following HTML:
+
+```html
+<section class="chat chat--disabled">
+  <div class="chat__output">
+    <p class="chat__message">
+    <p class="chat__message">
+  </div>
+  <button class="chat__toggle">Enable</button>
+</section>
+```
 [Block Element Modifier (BEM)](http://getbem.com/naming/ "BEM naming conventions")
 
 
