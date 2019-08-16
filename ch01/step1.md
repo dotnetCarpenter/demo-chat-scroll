@@ -38,13 +38,32 @@ For our simple chat we will use the following HTML:
 ```html
 <section class="chat chat--disabled">
   <div class="chat__output">
-    <p class="chat__message">
-    <p class="chat__message">
+    <p class="chat__message">message 1</p>
+    <p class="chat__message">message 2</p>
+    ...
   </div>
   <button class="chat__toggle">Enable</button>
 </section>
 ```
+
+_`<section>` denote a block that can be reused on the same page
+or across pages. `<p>` is a paragraph of text, in this case a
+chat message. `<button>` conveys an action to enable/disable the
+chat module. `<div>` has no semantic meaning but we will use the
+element to measure scrolling position and add new `<p>` elements._
+
+More often than not, we need to create elements for styling
+purposes. While you should know `::before` and `::after`, which
+can be used to create hidden pseudo elements for styling purposes.
+It's often nessesary to create one or two elements for the sole purpose
+of styling and/or programmatically measure/manipulate. In the case
+that an element has no semantic meaning, we use `<div>` for block
+elements and `<span>` for inline elements. If an element has a
+semantic meaning, you should [search][html] for another element to
+convey the meaning of your structure.
+
 [Block Element Modifier (BEM)](http://getbem.com/naming/ "BEM naming conventions")
 
 
 [mvc]: ./mvc.png "MVC - who speaks to who"
+[html]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning "List of HTML elements, with description"
