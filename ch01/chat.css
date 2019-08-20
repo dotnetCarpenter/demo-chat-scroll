@@ -1,0 +1,26 @@
+.chat__output {
+  height: 80px;
+
+  overflow-y: scroll;
+
+  transition: background-color 250ms;
+}
+
+.chat--disabled .chat__output {
+  background-color: hsla(0, 0%, 0%, 0.4);
+}
+
+.chat--enabled .chat__output {
+  background-color: hsla(0, 0%, 0%, 0);
+}
+
+.chat__message {
+  margin: 0;
+  padding: 0 .2em;
+
+  line-height: 1.4em;
+}
+
+.chat__message:nth-child(odd) {
+  background-color: hsla(0, 0%, 0%, 0.2);
+}

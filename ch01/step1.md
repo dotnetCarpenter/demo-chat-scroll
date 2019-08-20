@@ -84,13 +84,56 @@ The structure of [BEM][bem] is:
 2. Element - The elements inside your module.
 3. Modifier - Changes to your block or your elements.
 
+For our little example we will use the following CSS:
+
+```css
+.chat__output {
+  height: 80px;
+
+  overflow-y: scroll;
+
+  transition: background-color 250ms;
+}
+
+.chat--disabled .chat__output {
+  background-color: hsla(0, 0%, 0%, 0.4);
+}
+
+.chat--enabled .chat__output {
+  background-color: hsla(0, 0%, 0%, 0);
+}
+
+.chat__message {
+  margin: 0;
+  padding: 0 .2em;
+
+  line-height: 1.4em;
+}
+
+.chat__message:nth-child(odd) {
+  background-color: hsla(0, 0%, 0%, 0.2);
+}
+```
+_We don't absolutely have to style every BEM element, but
+experience tells me that in a real world scenario, we probably
+will. We have 1 state, which we visualize with a fading
+transition of the background color. Our `.chat__message` is
+currently a `<p>` element, which is a block element in CSS
+terms (not [BEM][bem]) and has some browser styling by default.
+We negate the default margin and add a little spacing for
+readability. You should use a CSS normalize base for any
+app that has considerable styling. A good one is
+[normalize.css][cssNormalize]._
+
+
 The key points of [BEM][bem] performance is:
 
-1. [Standalone CSS selectors.][cssSelector]
-2. [Parallelism, since styles are static.][cssParallelism]
+1. [Standalone CSS selectors][cssSelector]. Except for state
+modifiers.
+2. [Parallelism, since styles are static][cssParallelism].
 3. [Non-competing with the main thread since, since styles are
-static and not applied via js.][cssMainThread]
-4. [Scalable/Distributed, since styles are not generated on a server.][cssServerSide]
+static and not applied via js][cssMainThread].
+4. [Scalable/Distributed, since styles are not generated on a server][cssServerSide].
 
 If the above has not convinced you, then we can take a lengthy
 talk about it in another forum. I think it's an emotional topic
@@ -107,6 +150,9 @@ and we should really move on to talk about the Model.
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning "List of HTML elements, with description"
 [CSSinJS]: https://cssinjs.org/ "One of many CSSinJS implementations"
 [bem]: http://getbem.com/naming/ "BEM naming conventions"
+
+[cssNormalize]: https://github.com/necolas/normalize.css
+
 [cssSelector]: https://csswizardry.com/2011/09/writing-efficient-css-selectors/ "CSS Selectors Performance"
 [cssParallelism]: https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/ "Multi-core CSS rendering"
 [cssMainThread]: https://developer.mozilla.org/en-US/docs/Tools/Performance/Scenarios/Intensive_JavaScript "All js blocks the browser - the question is for how long?"

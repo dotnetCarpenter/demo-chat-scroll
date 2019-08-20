@@ -5,27 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Naive chat demo</title>
-  <style>
-    .chat__output {
-      height: 80px;
-
-      overflow-y: scroll;
-
-      transition: background-color 250ms;
-    }
-
-    .chat--disabled .chat__output {
-      background-color: hsla(0, 0%, 0%, 0.4);
-    }
-
-    .chat--enabled .chat__output {
-      background-color: hsla(0, 0%, 0%, 0);
-    }
-
-    .chat__message:nth-child(odd) {
-      background-color: hsla(0, 0%, 0%, 0.2);
-    }
-  </style>
+  <link rel="stylesheet" href="chat.css">
 </head>
 <body>
   <section class="chat chat--disabled">
