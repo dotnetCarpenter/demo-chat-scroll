@@ -90,7 +90,7 @@ The key points of [BEM][bem] performance is:
 2. [Parallelism, since styles are static.][cssParallelism]
 3. [Non-competing with the main thread since, since styles are
 static and not applied via js.][cssMainThread]
-4. [Distributed, since styles are not generated on a server.][cssServerSide]
+4. [Scalable/Distributed, since styles are not generated on a server.][cssServerSide]
 
 If the above has not convinced you, then we can take a lenghty
 talk about it in another forum. I think it's an emotinal topic
@@ -105,9 +105,12 @@ and we should really move on to talk about the Model.
 
 [mvc]: ./mvc.png "MVC - who speaks to who"
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning "List of HTML elements, with description"
-[CSSinJS]: https://cssinjs.org/
+[CSSinJS]: https://cssinjs.org/ "One of many CSSinJS implementations"
 [bem]: http://getbem.com/naming/ "BEM naming conventions"
-[cssSelector]: https://csswizardry.com/2011/09/writing-efficient-css-selectors/ "CSS selectors Performance"
-[cssParallelism]: https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/
-[cssMainThread]: https://developer.mozilla.org/en-US/docs/Tools/Performance/Scenarios/Intensive_JavaScript
-[cssServerSide]: https://cssinjs.org/server-side-rendering?v=v10.0.0-alpha.24
+[cssSelector]: https://csswizardry.com/2011/09/writing-efficient-css-selectors/ "CSS Selectors Performance"
+[cssParallelism]: https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/ "Multi-core CSS rendering"
+[cssMainThread]: https://developer.mozilla.org/en-US/docs/Tools/Performance/Scenarios/Intensive_JavaScript "All js blocks the browser - the question is for how long?"
+[cssServerSide]: https://cssinjs.org/server-side-rendering?v=v10.0.0-alpha.24 "Since a browsers do work on a user's machine,
+it does not matter if you have 1 or 1.000.000 simulationous
+users, but if you move the same work to your server, it DOES
+matter if you have to do the same work 1 or 1.000.000 times!"
