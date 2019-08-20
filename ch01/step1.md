@@ -111,6 +111,6 @@ and we should really move on to talk about the Model.
 [cssParallelism]: https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/ "Multi-core CSS rendering"
 [cssMainThread]: https://developer.mozilla.org/en-US/docs/Tools/Performance/Scenarios/Intensive_JavaScript "All js blocks the browser - the question is for how long?"
 [cssServerSide]: https://cssinjs.org/server-side-rendering?v=v10.0.0-alpha.24 "Since a browsers do work on a user's machine,
-it does not matter if you have 1 or 1.000.000 simulationous
+it does not matter if you have 1 or 1.000.000 simultaneous
 users, but if you move the same work to your server, it DOES
 matter if you have to do the same work 1 or 1.000.000 times!"
