@@ -58,7 +58,7 @@ element to measure scrolling position and add new `<p>` elements._
 More often than not, we need to create elements for styling
 purposes. While you should know `::before` and `::after`, which
 can be used to create hidden pseudo elements for styling purposes.
-It's often nessesary to create one or two elements for the sole purpose
+It's often necessary to create one or two elements for the sole purpose
 of styling and/or programmatically measure/manipulate. In the case
 that an element has no semantic meaning, we use `<div>` for block
 elements and `<span>` for inline elements. If an element has a
@@ -69,11 +69,11 @@ You probably also noticed that each HTML element in our chat has a
 `class` attribute and their naming is somewhat consistent.
 What I have used here is
 [Block Element Modifier (BEM)][bem],
-which gurantees that CSS does not cascade out of our chat module
+which guarantees that CSS does not cascade out of our chat module
 to other parts of our app, as long as the Block name is unique
 (it's conflict free).
 This technique works well for both small and big apps and is
-heavily optimised in all browsers as oppose to [CSSinJS][CSSinJS]
+heavily optimized in all browsers as oppose to [CSSinJS][CSSinJS]
 which has a negative impact on performance and is more difficult
 to setup, whereas a naming convention has zero setup (except for
 the setup happening in your brain).
@@ -81,7 +81,7 @@ the setup happening in your brain).
 The structure of [BEM][bem] is:
 
 1. Block - The root element of your module.
-2. Element - The elements insinde your module.
+2. Element - The elements inside your module.
 3. Modifier - Changes to your block or your elements.
 
 The key points of [BEM][bem] performance is:
@@ -92,8 +92,8 @@ The key points of [BEM][bem] performance is:
 static and not applied via js.][cssMainThread]
 4. [Scalable/Distributed, since styles are not generated on a server.][cssServerSide]
 
-If the above has not convinced you, then we can take a lenghty
-talk about it in another forum. I think it's an emotinal topic
+If the above has not convinced you, then we can take a lengthy
+talk about it in another forum. I think it's an emotional topic
 and we should really move on to talk about the Model.
 
 
