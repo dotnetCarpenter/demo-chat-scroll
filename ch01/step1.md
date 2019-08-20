@@ -10,7 +10,7 @@ vanilla javascript (js).
 We are going to look at best practice for front-end architecture,
 CSS naming and the most useful DOM API's.
 
-### Architecture
+## Architecture
 
 The most used front-end architecture is Model View Controller
 (MVC) or small deviations of MVC.
@@ -23,7 +23,7 @@ presentation of our data (View) and the code that controls the Model and react t
 _As shown above; the Model never speaks to the View and vice versa._
 
 
-### View
+## View
 
 A front-end View, mainly, consist of HTML and CSS.
 HTML is pretty easy to grasp which is also the whole point of
@@ -52,6 +52,9 @@ chat message. `<button>` conveys an action to enable/disable the
 chat module. `<div>` has no semantic meaning but we will use the
 element to measure scrolling position and add new `<p>` elements._
 
+
+### CSS
+
 More often than not, we need to create elements for styling
 purposes. While you should know `::before` and `::after`, which
 can be used to create hidden pseudo elements for styling purposes.
@@ -62,8 +65,49 @@ elements and `<span>` for inline elements. If an element has a
 semantic meaning, you should [search][html] for another element to
 convey the meaning of your structure.
 
-[Block Element Modifier (BEM)](http://getbem.com/naming/ "BEM naming conventions")
+You probably also noticed that each HTML element in our chat has a
+`class` attribute and their naming is somewhat consistent.
+What I have used here is
+[Block Element Modifier (BEM)][bem],
+which gurantees that CSS does not cascade out of our chat module
+to other parts of our app, as long as the Block name is unique
+(it's conflict free).
+This technique works well for both small and big apps and is
+heavily optimised in all browsers as oppose to [CSSinJS][CSSinJS]
+which has a negative impact on performance and is more difficult
+to setup, whereas a naming convention has zero setup (except for
+the setup happening in your brain).
+
+The structure of [BEM][bem] is:
+
+1. Block - The root element of your module.
+2. Element - The elements insinde your module.
+3. Modifier - Changes to your block or your elements.
+
+The key points of [BEM][bem] performance is:
+
+1. [Standalone CSS selectors.][cssSelector]
+2. [Parallelism, since styles are static.][cssParallelism]
+3. [Non-competing with the main thread since, since styles are
+static and not applied via js.][cssMainThread]
+4. [Distributed, since styles are not generated on a server.][cssServerSide]
+
+If the above has not convinced you, then we can take a lenghty
+talk about it in another forum. I think it's an emotinal topic
+and we should really move on to talk about the Model.
+
+
+## Model
+
+
+
 
 
 [mvc]: ./mvc.png "MVC - who speaks to who"
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning "List of HTML elements, with description"
+[CSSinJS]: https://cssinjs.org/
+[bem]: http://getbem.com/naming/ "BEM naming conventions"
+[cssSelector]: https://csswizardry.com/2011/09/writing-efficient-css-selectors/ "CSS selectors Performance"
+[cssParallelism]: https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/
+[cssMainThread]: https://developer.mozilla.org/en-US/docs/Tools/Performance/Scenarios/Intensive_JavaScript
+[cssServerSide]: https://cssinjs.org/server-side-rendering?v=v10.0.0-alpha.24
