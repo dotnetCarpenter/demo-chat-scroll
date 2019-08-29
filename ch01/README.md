@@ -180,3 +180,5 @@ efficient or elegant implementation but should be easy to grok.
 it does not matter if you have 1 or 1.000.000 simultaneous
 users, but if you move the same work to your server, it DOES
 matter, if you have to do the same work 1 or 1.000.000 times!"
+
+[classPrivate]: https://github.com/tc39/proposal-class-fields "Private fields proposal"
