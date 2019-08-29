@@ -2,13 +2,15 @@ https://stackoverflow.com/questions/57367962/chat-does-not-scroll-to-the-bottom-
 
 [Back to index](../README.md)
 
-I am going to show you how to implement, some of a very simple
-and naive chat. Not in jQuery, because it seems that you still
-need to _get_ the foundation of front-end development, but in
-vanilla javascript (js).
+Before jumping in and give the implementation in jQuery, let's
+take a step back and implement this in a framework/library
+agnostic way. That can then be either augmented or refactored to
+use a library, like [jQuery][jquery], or a framework like
+[Vue.js][vuejs].
 
 We are going to look at best practice for front-end architecture,
-CSS naming and the most useful DOM API's.
+Cascading Style Sheets (CSS) naming conventions and
+the most common used Document Object Model (DOM) APIs.
 
 ## Architecture
 
@@ -144,8 +146,8 @@ and we should really move on to talk about the Model.
 
 
 
-
-
+[jquery]: https://api.jquery.com/
+[vuejs]: https://vuejs.org
 [mvc]: ./mvc.png "MVC - who speaks to who"
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning "List of HTML elements, with description"
 [CSSinJS]: https://cssinjs.org/ "One of many CSSinJS implementations"
