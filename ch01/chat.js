@@ -1,6 +1,7 @@
 //@ts-check
 'use strict';
 
+// Utility
 class EventEmitter {
   constructor () {
     this.eventListeners = [];
@@ -10,7 +11,7 @@ class EventEmitter {
     this.eventListeners.forEach(listener => {
       const [savedEventName, f] = listener;
       if (savedEventName === eventName) {
-        f(...args);
+        f.call(this, ...args);
       }
     });
   }
@@ -35,6 +36,7 @@ class EventEmitter {
   }
 }
 
+// Model
 class Chat extends EventEmitter {
   constructor ({source, pollInterval}) {
     super();
@@ -42,6 +44,7 @@ class Chat extends EventEmitter {
     this.pollInterval = pollInterval || 3000;
     this.isEnabled = false;
     this.timerId = 0;
+    this.pageNumber = 1;
   }
 
   load () {
@@ -57,16 +60,29 @@ class Chat extends EventEmitter {
   start () {
     this.isEnabled = true;
     this.timerId = setInterval(this.load.bind(this), this.pollInterval)
-    this.load()
+
+    this.on('load', this.setNextPageNumber);
+
     this.trigger('start')
+    this.load()
   }
 
   stop () {
     this.isEnabled = false;
+
     if (this.timerId) clearInterval(this.timerId)
+    this.off('load', this.setNextPageNumber);
+
     this.trigger('stop')
   }
+
+  setNextPageNumber () {
+    this.pageNumber = Math.min(100, Math.max(1, (this.pageNumber + 1) % 101));
+    this.source = this.source.replace(/(_page=)\d+/, '$1' + this.pageNumber);
+  }
 }
+
+// Controller
 
 const source = 'https://jsonplaceholder.typicode.com/posts?_page=1&_limit=1'; // or 'load_chat.php'
 
@@ -113,19 +129,3 @@ chat.on('received', json => {
     }
   }
 });
-
-let pageNumber = 1;
-chat.on('load', () => {
-  chat.source = chat.source.replace(/(_page=)\d+/, '$1' + (pageNumber = getNextPageNumber(pageNumber, 1 , 101)));
-});
-
-/** Safely increment a number by 1 within the boundaries
- * of min (inclusive) and max (exclusive). When the max boundary
- * is reached. The function will return the min number.
- * @param {number} pageNumber the current number you want to increment
- * @param {number} min
- * @param {number} max
- */
-function getNextPageNumber (pageNumber, min, max) {
-  return Math.min(100, Math.max(min, (pageNumber + 1) % max));
-}

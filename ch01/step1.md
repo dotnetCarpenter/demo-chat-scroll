@@ -4,13 +4,14 @@ https://stackoverflow.com/questions/57367962/chat-does-not-scroll-to-the-bottom-
 
 Before jumping in and give the implementation in jQuery, let's
 take a step back and implement this in a framework/library
-agnostic way. That can then be either augmented or refactored to
+agnostic way. That can then, be either augmented or refactored to
 use a library, like [jQuery][jquery], or a framework like
 [Vue.js][vuejs].
 
 We are going to look at best practice for front-end architecture,
 Cascading Style Sheets (CSS) naming conventions and
 the most common used Document Object Model (DOM) APIs.
+
 
 ## Architecture
 
@@ -20,7 +21,7 @@ That means that our chat app has decoupled code that manages
 how and where we get our data (Model), what a user can see -
 presentation of our data (View) and the code that controls the Model and react to user actions (Controller).
 
-![MVC - who speaks to who][mvc]
+![][mvc]
 
 _As shown above; the Model never speaks to the View and vice versa._
 
@@ -89,6 +90,8 @@ The structure of [BEM][bem] is:
 For our little example we will use the following CSS:
 
 ```css
+.chat {}
+
 .chat__output {
   height: 80px;
 
@@ -116,15 +119,16 @@ For our little example we will use the following CSS:
   background-color: hsla(0, 0%, 0%, 0.2);
 }
 ```
-_We don't absolutely have to style every BEM element, but
-experience tells me that in a real world scenario, we probably
-will. We have 1 state, which we visualize with a fading
-transition of the background color. Our `.chat__message` is
-currently a `<p>` element, which is a block element in CSS
-terms (not [BEM][bem]) and has some browser styling by default.
-We negate the default margin and add a little spacing for
-readability. You should use a CSS normalize base for any
-app that has considerable styling. A good one is
+_Not all HTML elements in a block has to be a [BEM][bem] element
+and we don't absolutely have to style every [BEM][bem] element,
+but experience tells me that in a real world scenario, we probably
+will style every [BEM][bem] element. We have 1 state, which we
+visualize with a fading transition of the background color. Our
+`.chat__message` is currently a `<p>` element, which is a block
+element in CSS terms (not [BEM][bem]) and has some browser
+styling by default. We negate the default margin and add a little
+spacing for readability. You should use a CSS normalize base for
+any app that has considerable styling. A good one is
 [normalize.css][cssNormalize]._
 
 
@@ -144,11 +148,25 @@ and we should really move on to talk about the Model.
 
 ## Model
 
+JavaScript (js) is a multi-paradigm language. As such we can
+write our program in FP, OOP (class/class-less), AOP and
+imperative style. Aside from imperative style, I think class
+based OOP, known from Java, C#, PHP, etc, is the most known
+and widely used paradigm, so our first implementation will use
+class based OOP, written in close to PHP style.
 
+First we need to define our model. We are going to use simple
+and well understood patterns. This is not necessary the most
+efficient or elegant implementation but should be easy to grok.
+
+![][classDiagram]
+
+
+[mvc]: ./mvc.png "MVC - who speaks to who"
+[classDiagram]: ./uml-class-diagram.png "UML - Our Chat Model"
 
 [jquery]: https://api.jquery.com/
 [vuejs]: https://vuejs.org
-[mvc]: ./mvc.png "MVC - who speaks to who"
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning "List of HTML elements, with description"
 [CSSinJS]: https://cssinjs.org/ "One of many CSSinJS implementations"
 [bem]: http://getbem.com/naming/ "BEM naming conventions"
@@ -161,4 +179,4 @@ and we should really move on to talk about the Model.
 [cssServerSide]: https://cssinjs.org/server-side-rendering?v=v10.0.0-alpha.24 "Since a browsers do work on a user's machine,
 it does not matter if you have 1 or 1.000.000 simultaneous
 users, but if you move the same work to your server, it DOES
-matter if you have to do the same work 1 or 1.000.000 times!"
+matter, if you have to do the same work 1 or 1.000.000 times!"
