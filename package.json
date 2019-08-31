@@ -1,9 +1,9 @@
 {
   "name": "demo-chat-scroll",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "dotnetCarpenter <jon.ronnenberg@gmail.com>",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "ch01": "ws --directory ch01 --open"
   },

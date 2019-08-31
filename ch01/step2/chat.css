@@ -2,10 +2,13 @@
 
 .chat__output {
   height: 80px;
+  padding: 0;
 
   overflow-y: scroll;
 
   transition: background-color 250ms;
+  list-style-type: symbols(cyclic '\2020' '\2021' '\A7');
+  list-style-position: inside;
 }
 
 .chat--disabled .chat__output {
@@ -17,6 +20,8 @@
 }
 
 .chat__message {
+  display: list-item;
+
   margin: 0;
   padding: 0 .2em;
 
