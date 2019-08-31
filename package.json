@@ -5,12 +5,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "ch01": "ws --directory ch01 --open"
-  },
-  "dependencies": {
-    "jquery": "^3.4.1"
-  },
-  "optionalDependencies": {
-    "local-web-server": "^3.0.7"
+    "start": "bundle exec jekyll serve --incremental"
   }
 }
