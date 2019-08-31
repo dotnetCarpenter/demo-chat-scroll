@@ -3,31 +3,41 @@
 
 // Utility
 class EventEmitter {
-  constructor () {
+  constructor ()
+  {
     this.eventListeners = [];
   }
 
-  trigger (eventName, ...args) {
+  trigger (eventName, ...args)
+  {
     this.eventListeners.forEach(listener => {
       const [savedEventName, f] = listener;
-      if (savedEventName === eventName) {
+      if (savedEventName === eventName)
+      {
         f.call(this, ...args);
       }
     });
   }
 
-  on (eventName, f) {
+  on (eventName, f)
+  {
     this.eventListeners.push([eventName, f]);
   }
 
-  off (eventName, f) {
+  off (eventName, f)
+  {
     this.eventListeners = this.eventListeners.filter(([savedEventName, savedF]) => {
-      if (f != null) {
-        if (eventName === savedEventName && f === savedF) {
+      if (f != null)
+      {
+        if (eventName === savedEventName && f === savedF)
+        {
           return false;
         }
-      } else {
-        if (eventName === savedEventName) {
+      }
+      else
+      {
+        if (eventName === savedEventName)
+        {
           return false;
         }
       }
@@ -38,7 +48,8 @@ class EventEmitter {
 
 // Model
 class Chat extends EventEmitter {
-  constructor ({source, pollInterval}) {
+  constructor ({source, pollInterval})
+  {
     super();
     this.source = source;
     this.pollInterval = pollInterval || 3000;
@@ -47,7 +58,8 @@ class Chat extends EventEmitter {
     this.pageNumber = 1;
   }
 
-  load () {
+  load ()
+  {
     fetch(this.source)
       .then(async response => {
         const json = await response.json()
@@ -57,7 +69,8 @@ class Chat extends EventEmitter {
     this.trigger('load')
   }
 
-  start () {
+  start ()
+  {
     this.isEnabled = true;
     this.timerId = setInterval(this.load.bind(this), this.pollInterval)
 
@@ -67,7 +80,8 @@ class Chat extends EventEmitter {
     this.load()
   }
 
-  stop () {
+  stop ()
+  {
     this.isEnabled = false;
 
     if (this.timerId) clearInterval(this.timerId)
@@ -76,7 +90,8 @@ class Chat extends EventEmitter {
     this.trigger('stop')
   }
 
-  setNextPageNumber () {
+  setNextPageNumber ()
+  {
     this.pageNumber = Math.min(100, Math.max(1, (this.pageNumber + 1) % 101));
     this.source = this.source.replace(/(_page=)\d+/, '$1' + this.pageNumber);
   }
@@ -95,27 +110,34 @@ const chat = new Chat({source, pollInterval: 1000});
 toggle.addEventListener('click', event => {
   event.preventDefault();
 
-  if (chat.isEnabled) {
+  if (chat.isEnabled)
+  {
     chat.stop();
-  } else {
+  }
+  else
+  {
     chat.start();
   }
 });
 
-chat.on('start', () => {
+chat.on('start', () =>
+{
   toggle.textContent = 'Disable';
   element.classList.remove('chat--disabled');
   element.classList.add('chat--enabled');
 });
 
-chat.on('stop', () => {
+chat.on('stop', () =>
+{
   toggle.textContent = 'Enable';
   element.classList.remove('chat--enabled');
   element.classList.add('chat--disabled');
 });
 
-chat.on('received', json => {
-  if (json && json[0] && json[0].title) {
+chat.on('received', json =>
+{
+  if (json && json[0] && json[0].title)
+  {
     const isScrolledToBottom = output.scrollHeight - output.clientHeight <= output.scrollTop + 1;
     const message = json[0].title;
     const messageElement = document.createElement('li');
@@ -124,7 +146,8 @@ chat.on('received', json => {
     messageElement.innerHTML = message;
     output.appendChild(messageElement);
 
-    if (isScrolledToBottom) {
+    if (isScrolledToBottom)
+    {
       output.scrollTop = output.scrollHeight - output.clientHeight;
     }
   }

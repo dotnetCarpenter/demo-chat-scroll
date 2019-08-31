@@ -122,15 +122,14 @@ For our little example we will use the following CSS:
 _Not all HTML elements in a block has to be a [BEM][bem] element
 and we don't absolutely have to style every [BEM][bem] element,
 but experience tells me that in a real world scenario, we probably
-will style every [BEM][bem] element. We have 1 state, which we
+will style every [BEM][bem] element. We have 2 states,
+enabled/disabled (`chat--enabled`/`chat--disabled`), which we
 visualize with a fading transition of the background color. Our
-`.chat__message` is currently a `<p>` element, which is a block
-element in CSS terms (not [BEM][bem]) and has some browser
-styling by default. We negate the default margin and add a little
-spacing for readability. You should use a CSS normalize base for
-any app that has considerable styling. A good one is
-[normalize.css][cssNormalize]._
-
+`.chat__message` is currently a `<p>` element, which is a block element in CSS terms (not [BEM][bem])
+and has some browser styling by default. We negate the default
+margin and add a little spacing for readability. You should use a
+CSS normalize base for any app that has considerable styling. A
+good one is [normalize.css][cssNormalize]._
 
 The key points of [BEM][bem] performance is:
 
